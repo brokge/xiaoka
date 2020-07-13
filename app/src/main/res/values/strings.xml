@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">XiaoKa</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">About</string>
+    <string name="str_my_card_title">myCard</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="str_edit">edit</string>
+    <string name="str_add">add</string>
+    <string name="str_format_billdate">每月%d号出账单</string>
+    <string name="str_format_repayment">每月%d号还款</string>
+    <string name="str_detail">详情</string>
+    <string name="str_confirm">确认</string>
+    <string name="str_cancel">取消</string>
+    <string name="msg_del_confirm">确认删除？</string>
+</resources>

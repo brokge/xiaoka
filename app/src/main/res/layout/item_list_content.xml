@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    >
+
+    <View
+        android:id="@+id/v_bg_item"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_card_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h,5:2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/id_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:text="招商银行信用卡"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="@id/v_bg_item"
+        app:layout_constraintTop_toTopOf="@id/v_bg_item" />
+
+    <TextView
+        android:id="@+id/tv_card_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:text="额度50000"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintTop_toTopOf="@id/v_bg_item"
+        app:layout_constraintRight_toRightOf="@id/v_bg_item" />
+
+    <TextView
+        android:id="@+id/tv_card_num"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:text="****   ****   ****   2499"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/v_bg_item"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/v_bg_item" />
+
+    <TextView
+        android:id="@+id/tv_card_bill_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="24dp"
+        android:text="每月09号出账单"
+        android:textColor="@color/color_cccccc"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="@id/v_bg_item"
+        app:layout_constraintTop_toBottomOf="@id/id_name" />
+
+    <TextView
+        android:id="@+id/tv_card_repayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="24dp"
+        android:text="每月20号还款"
+        android:textColor="@color/color_cccccc"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@id/tv_card_bill_date"
+        app:layout_constraintTop_toBottomOf="@id/id_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

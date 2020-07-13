@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">小卡</string>
+    <string name="title_home">主页</string>
+    <string name="title_dashboard">视图</string>
+    <string name="title_notifications">我的</string>
+    <string name="str_my_card_title">我的卡</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="str_edit">编辑</string>
+    <string name="str_add">添加</string>
+    <string name="str_format_billdate">每月%d号出账单</string>
+    <string name="str_format_repayment">每月%d号还款</string>
+</resources>

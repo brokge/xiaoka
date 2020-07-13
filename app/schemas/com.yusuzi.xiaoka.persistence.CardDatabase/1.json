@@ -1,0 +1,88 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "c0f9b3bfb99d22d0ab41a779844cc371",
+    "entities": [
+      {
+        "tableName": "Card",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`create_date_time` INTEGER NOT NULL, `update_date_time` INTEGER NOT NULL, `ver` INTEGER NOT NULL, `is_valid` INTEGER NOT NULL, `cid` TEXT NOT NULL, `card_name` TEXT, `card_num` TEXT, `card_amount` INTEGER NOT NULL, `card_bill_date` INTEGER NOT NULL, `card_repayment_date` INTEGER NOT NULL, PRIMARY KEY(`cid`))",
+        "fields": [
+          {
+            "fieldPath": "createDateTime",
+            "columnName": "create_date_time",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updateDateTime",
+            "columnName": "update_date_time",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ver",
+            "columnName": "ver",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isValid",
+            "columnName": "is_valid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cid",
+            "columnName": "cid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cardName",
+            "columnName": "card_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cardNum",
+            "columnName": "card_num",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cardAmount",
+            "columnName": "card_amount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cardBillDate",
+            "columnName": "card_bill_date",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cardRepaymentDate",
+            "columnName": "card_repayment_date",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "cid"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c0f9b3bfb99d22d0ab41a779844cc371')"
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detail_navigation"
+    app:startDestination="@id/detailHomeFragment">
+
+
+    <fragment
+        android:id="@+id/detailHomeFragment"
+        android:name="com.yusuzi.xiaoka.ui.card.DetailHomeFragment"
+        android:label="DetailHomeFragment">
+        <action
+            android:id="@+id/action_home_to_cardDetailFragment"
+            app:destination="@id/cardDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_home_to_cardEditFragment"
+            app:destination="@id/cardEditFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <argument
+            android:name="key_id"
+            app:argType="string" />
+        <argument
+            android:name="key_handle_type"
+            android:defaultValue="2"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardDetailFragment"
+        android:name="com.yusuzi.xiaoka.ui.card.CardDetailFragment"
+        android:label="CardDetailFragment"
+        tools:layout="@layout/card_detail_fragment">
+        <action
+            android:id="@+id/action_detail_to_cardEditFragment"
+            app:destination="@id/cardEditFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cardEditFragment"
+        android:name="com.yusuzi.xiaoka.ui.card.CardEditFragment"
+        android:label="card_edit_fragment"
+        tools:layout="@layout/card_edit_fragment" />
+
+
+</navigation>
