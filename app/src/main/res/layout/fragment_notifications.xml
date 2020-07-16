@@ -6,17 +6,116 @@
     android:layout_height="match_parent"
     tools:context=".ui.notifications.NotificationsFragment">
 
-    <TextView
-        android:id="@+id/text_notifications"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <View
+        android:id="@+id/v_detail_bg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/shape_detail_container_bg"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_bill_date"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="14dp"
+        android:text="以额度优先"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@id/v_detail_bg"
+        app:layout_constraintTop_toTopOf="@id/v_detail_bg" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/sc_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="14dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_amount"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@id/tv_amount"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_amount" />
+
+    <TextView
+        android:id="@+id/tv_bill_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="14dp"
+        android:text="以时间优先"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/v_detail_bg"
+        app:layout_constraintLeft_toLeftOf="@id/v_detail_bg"
+        app:layout_constraintTop_toBottomOf="@id/tv_amount" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/sc_bill_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="14dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_bill_date"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@id/tv_bill_date"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_bill_date" />
+
+
+    <View
+        android:id="@+id/v_about_bg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/shape_detail_container_bg"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_about"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_detail_bg" />
+
+    <TextView
+        android:id="@+id/tv_feedback"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_item_tab"
+        android:clickable="true"
+        android:drawableRight="@drawable/ic_arrow_right_aaaaaa_24dp"
+        android:padding="14dp"
+        android:text="反馈建议"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/v_about_bg" />
+
+    <TextView
+        android:id="@+id/tv_about"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_item_tab"
+        android:clickable="true"
+        android:drawableRight="@drawable/ic_arrow_right_aaaaaa_24dp"
+        android:padding="14dp"
+        android:text="关于小卡"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/v_about_bg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_feedback" />
+
+    <TextView
+        android:id="@+id/tv_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="v1.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="12dp"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

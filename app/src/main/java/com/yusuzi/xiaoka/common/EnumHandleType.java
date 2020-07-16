@@ -1,7 +1,7 @@
 package com.yusuzi.xiaoka.common;
 
 public enum EnumHandleType {
-    EDIT(1), DETAIL(2),ADD(3);
+    EDIT(1), DETAIL(2),ADD(3),ABOUT(4),FEEDBACK(5);
 
     private int value;
 

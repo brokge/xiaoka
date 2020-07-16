@@ -47,7 +47,7 @@ public class CardDetailFragment extends Fragment {
     public void onCreate (@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Activity activity = this.getActivity();
-        Toolbar  toolbar  = (Toolbar) activity.findViewById(R.id.detail_toolbar);
+        Toolbar  toolbar  = activity.findViewById(R.id.detail_toolbar);
         if(toolbar != null) {
             toolbar.setTitle(getString(R.string.str_detail));
         }
@@ -98,13 +98,13 @@ public class CardDetailFragment extends Fragment {
     }
 
     private void bindView (View rootView) {
-        tvName = (TextView) rootView.findViewById(R.id.tv_name);
-        tvCardNum = (TextView) rootView.findViewById(R.id.tv_card_num);
-        etAmount = (TextView) rootView.findViewById(R.id.et_amount);
-        etBillDate = (TextView) rootView.findViewById(R.id.et_bill_date);
-        etRepayment = (TextView) rootView.findViewById(R.id.et_repayment);
-        tvEdit = (TextView) rootView.findViewById(R.id.tv_edit);
-        tvDel = (TextView) rootView.findViewById(R.id.tv_del);
+        tvName = rootView.findViewById(R.id.tv_name);
+        tvCardNum = rootView.findViewById(R.id.tv_card_num);
+        etAmount = rootView.findViewById(R.id.et_amount);
+        etBillDate = rootView.findViewById(R.id.et_bill_date);
+        etRepayment = rootView.findViewById(R.id.et_repayment);
+        tvEdit = rootView.findViewById(R.id.tv_edit);
+        tvDel = rootView.findViewById(R.id.tv_del);
         tvEdit.setOnClickListener(v -> {
             Navigation.findNavController(getActivity(), R.id.detail_nav_host_fragment)
                     .navigate(R.id.action_detail_to_cardEditFragment,getArguments());

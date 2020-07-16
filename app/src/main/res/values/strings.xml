@@ -11,7 +11,10 @@
     <string name="str_format_billdate">每月%d号出账单</string>
     <string name="str_format_repayment">每月%d号还款</string>
     <string name="str_detail">详情</string>
+    <string name="str_about">关于</string>
+    <string name="str_feedback">反馈</string>
     <string name="str_confirm">确认</string>
     <string name="str_cancel">取消</string>
     <string name="msg_del_confirm">确认删除？</string>
+    <string name="str_format_count">共%d张</string>
 </resources>

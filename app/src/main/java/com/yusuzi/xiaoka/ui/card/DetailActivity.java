@@ -51,8 +51,6 @@ public class DetailActivity extends AppCompatActivity {
                 navGraph.setStartDestination(R.id.cardEditFragment);
                 navController.setGraph(navGraph);
             }
-
-
         }
     }
 

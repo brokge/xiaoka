@@ -2,12 +2,19 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
-
+    signingConfigs {
+        release {
+            storeFile file('../config/xiaoka.keystore')
+            storePassword RELEASE_STORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+        }
+    }
     defaultConfig {
         applicationId "com.yusuzi.xiaoka"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 1
+        versionCode increasedVersionCode()
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -23,6 +30,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -30,6 +38,96 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    flavorDimensions("channel")
+    productFlavors {
+        fir {
+            dimension "channel"
+        }
+        huawei {
+            dimension "channel"
+        }
+    }
+
+    applicationVariants.all { variant ->
+
+        if (variant.buildType.name.equals('release')) {
+            variant.outputs.all { output ->
+                def appName = 'xiaoka'
+                def buildName
+                def releaseApkName
+
+                variant.productFlavors.each { product ->
+                    buildName = product.name
+                }
+
+                releaseApkName = appName + '-' + versionName + '-' + defaultConfig.versionCode + '-' + buildName + '-' + getDate() + '.apk'
+                project.ext.outputFullFileName = releaseApkName
+                //println project.ext.outputFullFileName
+                outputFileName = releaseApkName
+            }
+        }
+    }
+}
+
+project.ext.set("outputFullFileName", "")
+
+//project.extensions.create('outputFullFileName',String,'')
+task assembleAndMd5(dependsOn: "assembleFirRelease") {
+    doFirst {
+        exec {
+            println 'createMd5'
+            def filePath = project.ext.outputFullFileName
+            println("FileName：${filePath}")
+            workingDir "${projectDir}"
+            //commandLine 'java', 'CreateMd5', "${workingDir}/build/outputs/apk/fir/release/${filePath}"
+            commandLine 'java', 'CreateMd5', "./build/outputs/apk/fir/release/${filePath}"
+            standardOutput = new ByteArrayOutputStream()
+            ext.out1 = {
+                return standardOutput.toString()
+            }
+        }
+    }
+    doLast {
+        println("MD5：" + ext.out1())
+    }
+
+}
+task assembleAndUpload(dependsOn: "assembleAndMd5") {
+    doFirst {
+        exec {
+            println 'upload to fir'
+            def filePath = project.ext.outputFullFileName
+            println("FileName：${filePath}")
+            workingDir "${projectDir}"
+            //commandLine 'java', 'CreateMd5', "${workingDir}/build/outputs/apk/fir/release/${filePath}"
+            commandLine 'fir', 'publish', "./build/outputs/apk/fir/release/${filePath}"
+            standardOutput = new ByteArrayOutputStream()
+            ext.out1 = {
+                return standardOutput.toString()
+            }
+        }
+    }
+    doLast {
+        println("upload：" + ext.out1())
+    }
+
+}
+
+
+//获取时间戳
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMddHHmm')
+    return formattedDate
+}
+// versionCode按时间自增
+def increasedVersionCode() {
+    //精确到 小时的
+    return (int) ((System.currentTimeMillis() + 0 * 1000 * 60 * 60) / 1000 / 60 / 60)
+    //精确到天的
+    //(int) ((System.currentTimeMillis()+0*1000*60*60) / 1000 / 60 / 60 )/24
+//(int) (System.currentTimeMillis() / 1000 / 60 / 60 / 24 - 17141)
 }
 
 dependencies {
@@ -43,6 +141,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.dynamicanimation:dynamicanimation:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

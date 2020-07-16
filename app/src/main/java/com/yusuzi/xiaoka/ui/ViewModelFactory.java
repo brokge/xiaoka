@@ -4,6 +4,7 @@ import com.yusuzi.xiaoka.api.CardDataSource;
 import com.yusuzi.xiaoka.ui.card.CardDetailViewModel;
 import com.yusuzi.xiaoka.ui.card.CardEditViewModel;
 import com.yusuzi.xiaoka.ui.dashboard.DashboardViewModel;
+import com.yusuzi.xiaoka.ui.home.HomeViewModel;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
@@ -28,6 +29,9 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
         }
         if(modelClass.isAssignableFrom(CardDetailViewModel.class)){
             return (T)new CardDetailViewModel(mDataSource);
+        }
+        if(modelClass.isAssignableFrom(HomeViewModel.class)){
+            return (T)new HomeViewModel(mDataSource);
         }
         //add other view model
         //noinspection unchecked

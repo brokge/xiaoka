@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/color_ffffffff"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    >
+
+    <TextView
+        android:id="@+id/id_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="招商银行信用卡"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_recommend_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20000元"
+        app:layout_constraintBottom_toBottomOf="@id/id_name"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@id/id_name"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/id_name" />
+
+    <TextView
+        android:id="@+id/tv_distance_reason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="理由：距离还款3天"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/id_name"
+        app:layout_constraintTop_toBottomOf="@id/id_name" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_distance_reason" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

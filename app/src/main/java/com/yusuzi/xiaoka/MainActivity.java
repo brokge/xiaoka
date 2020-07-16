@@ -1,5 +1,8 @@
 package com.yusuzi.xiaoka;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -16,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //以下代码用于去除阴影
+        if(Build.VERSION.SDK_INT>=21){
+            getSupportActionBar().setElevation(0);
+        }
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -25,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+    }
+    public static void start(Context context) {
+        Intent starter = new Intent(context, MainActivity.class);
+        context.startActivity(starter);
     }
 
 }

@@ -13,7 +13,6 @@ import com.yusuzi.xiaoka.common.EnumHandleType;
 import com.yusuzi.xiaoka.injection.Injections;
 import com.yusuzi.xiaoka.persistence.Card;
 import com.yusuzi.xiaoka.ui.ViewModelFactory;
-import com.yusuzi.xiaoka.ui.card.CardEditViewModel;
 import com.yusuzi.xiaoka.ui.card.DetailActivity;
 
 import java.util.ArrayList;
@@ -57,15 +56,16 @@ public class DashboardFragment extends Fragment {
         mAddView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View v) {
-                DetailActivity.start(getContext(),"", EnumHandleType.ADD);
+                DetailActivity.start(getContext(), "", EnumHandleType.ADD);
             }
         });
         assert mRecyclerView != null;
-        setupRecyclerView((RecyclerView) mRecyclerView);
+        setupRecyclerView(mRecyclerView);
         dashboardViewModel.getCardListLiveData().observe(getViewLifecycleOwner(),
                 content -> {
                     SimpleItemRecyclerViewAdapter adapter  = (SimpleItemRecyclerViewAdapter) mRecyclerView.getAdapter();
                     List<Card>                    cardList = content.getCardList();
+                    mCountView.setText(String.format(getString(R.string.str_format_count), cardList.size()));
                     adapter.setItems(cardList);
                     mEmptyView.setVisibility(cardList.isEmpty() ? View.VISIBLE : View.GONE);
                 });
@@ -120,7 +120,11 @@ public class DashboardFragment extends Fragment {
         public void onBindViewHolder (final ViewHolder holder, int position) {
             Card card = mValues.get(position);
             holder.idName.setText(card.cardName);
-            holder.tvCardNum.setText(card.cardNum);
+            String cardNum = card.cardNum;
+            if(cardNum.length() > 4) {
+                cardNum = cardNum.substring(cardNum.length() - 4, cardNum.length() );
+            }
+            holder.tvCardNum.setText(String.format("****  ****  ****  %s", cardNum));
             holder.tvCardBillDate.setText(String.format(mContext.getString(R.string.str_format_billdate), card.cardBillDate));
             holder.tvCardRepayment.setText(String.format(mContext.getString(R.string.str_format_repayment), card.cardRepaymentDate));
             holder.tvCardAmount.setText(String.valueOf(card.cardAmount));
@@ -128,7 +132,7 @@ public class DashboardFragment extends Fragment {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick (View v) {
-                    DetailActivity.start(mContext,card.cid,EnumHandleType.DETAIL);
+                    DetailActivity.start(mContext, card.cid, EnumHandleType.DETAIL);
                 }
             });
         }
@@ -148,12 +152,12 @@ public class DashboardFragment extends Fragment {
 
             ViewHolder (View rootView) {
                 super(rootView);
-                vBgItem = (View) rootView.findViewById(R.id.v_bg_item);
-                idName = (TextView) rootView.findViewById(R.id.id_name);
-                tvCardAmount = (TextView) rootView.findViewById(R.id.tv_card_amount);
-                tvCardNum = (TextView) rootView.findViewById(R.id.tv_card_num);
-                tvCardBillDate = (TextView) rootView.findViewById(R.id.tv_card_bill_date);
-                tvCardRepayment = (TextView) rootView.findViewById(R.id.tv_card_repayment);
+                vBgItem = rootView.findViewById(R.id.v_bg_item);
+                idName = rootView.findViewById(R.id.id_name);
+                tvCardAmount = rootView.findViewById(R.id.tv_card_amount);
+                tvCardNum = rootView.findViewById(R.id.tv_card_num);
+                tvCardBillDate = rootView.findViewById(R.id.tv_card_bill_date);
+                tvCardRepayment = rootView.findViewById(R.id.tv_card_repayment);
             }
         }
     }
