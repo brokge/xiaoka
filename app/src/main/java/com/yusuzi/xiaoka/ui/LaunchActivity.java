@@ -2,8 +2,10 @@ package com.yusuzi.xiaoka.ui;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +24,7 @@ import io.reactivex.Observable;
 public class LaunchActivity extends AppCompatActivity {
 
     private ImageView mLeftLogoImg;
+    private ImageView mEyeImg;
 
     private TextView mDescTitleTextView;
 
@@ -57,6 +60,9 @@ public class LaunchActivity extends AppCompatActivity {
             }
         });
 
+        mEyeImg = findViewById(R.id.iv_logo_eye);
+        mEyeImg.setVisibility(View.GONE);
+        AnimatedVectorDrawable animatedVectorDrawable = (AnimatedVectorDrawable) mEyeImg.getDrawable();
         // top logo by left
         mLeftLogoImg = findViewById(R.id.iv_logo);
         mLeftLogoImg.setTranslationY(400f);
@@ -67,11 +73,18 @@ public class LaunchActivity extends AppCompatActivity {
         leftLogoAnimY.setStartVelocity(-2000);
 
         final ValueAnimator logoAlphaAnim = ObjectAnimator.ofFloat(0f, 1f);
-        logoAlphaAnim.setDuration(600);
+        logoAlphaAnim.setDuration(500);
         logoAlphaAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate (ValueAnimator valueAnimator) {
+
                 mLeftLogoImg.setAlpha((Float) valueAnimator.getAnimatedValue());
+                if((Float) valueAnimator.getAnimatedValue() >= 1.0f) {
+                    mEyeImg.setVisibility(View.VISIBLE);
+                    if(!animatedVectorDrawable.isRunning()) {
+                        animatedVectorDrawable.start();
+                    }
+                }
             }
         });
 

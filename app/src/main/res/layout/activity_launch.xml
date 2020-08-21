@@ -7,6 +7,18 @@
     tools:context=".ui.LaunchActivity">
 
     <ImageView
+        android:id="@+id/iv_logo_eye"
+        android:layout_width="314dp"
+        android:layout_height="221dp"
+        android:src="@drawable/animater_eye"
+        app:layout_constraintBottom_toBottomOf="@id/iv_logo"
+        app:layout_constraintLeft_toLeftOf="@id/iv_logo"
+        app:layout_constraintRight_toRightOf="@id/iv_logo"
+        app:layout_constraintTop_toTopOf="@id/iv_logo"
+        app:layout_constraintVertical_bias="0.48000002"
+        />
+
+    <ImageView
         android:id="@+id/iv_logo"
         android:layout_width="314dp"
         android:layout_height="221dp"
@@ -17,16 +29,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.24000001" />
 
+
     <TextView
+        android:id="@+id/tv_slogon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_slogon"
         android:text="XIAO KA"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_logo"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="40sp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"
-        />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
